@@ -74,11 +74,12 @@ const CircularProgressBar = ({ percentage, title }) => {
 
 export const Skills = () => {
   const skills = [
-    { title: "Web Development", percentage: 95 },
-    { title: "Graphic Design", percentage: 80 },
-    { title: "Video Editing", percentage: 90 },
-    { title: "UI/UX Design", percentage: 85 },
-    { title: "Fotografer", percentage: 75 }
+    { title: "Graphic Design", percentage: 90 },
+    { title: "UI/UX Design", percentage: 80 },
+    { title: "Video Editing", percentage: 85 },
+    { title: "Motion Graphic", percentage: 75 },
+    { title: "Photofraphy/Videography", percentage: 90 },
+    { title: "Web Development", percentage: 70 }
   ];
 
   const responsive = {
