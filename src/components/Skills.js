@@ -1,13 +1,86 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import arrow1 from "../assets/img/arrow1.svg";
-import arrow2 from "../assets/img/arrow2.svg";
 import colorSharp from "../assets/img/color-sharp.png"
+import { useEffect, useState, useRef } from 'react';
+
+const CircularProgressBar = ({ percentage, title }) => {
+  const [progress, setProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const progressRef = useRef(null);
+  const progressStarted = useRef(false);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !progressStarted.current) {
+          setIsVisible(true);
+          progressStarted.current = true;
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (progressRef.current) {
+      observer.observe(progressRef.current);
+    }
+
+    return () => {
+      if (progressRef.current) {
+        observer.unobserve(progressRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      setProgress(0); // Explicitly set to 0 first
+      const startTime = Date.now();
+      const duration = 1500; // 1.5 seconds
+
+      const updateProgress = () => {
+        const currentTime = Date.now();
+        const elapsed = currentTime - startTime;
+        
+        if (elapsed < duration) {
+          const nextProgress = Math.min(
+            Math.floor((elapsed / duration) * percentage),
+            percentage
+          );
+          setProgress(nextProgress);
+          requestAnimationFrame(updateProgress);
+        } else {
+          setProgress(percentage);
+        }
+      };
+
+      requestAnimationFrame(updateProgress);
+    }
+  }, [isVisible, percentage]);
+
+  return (
+    <div className="circular-progress-container" ref={progressRef}>
+      <div 
+        className={`circular-progress ${isVisible ? 'animate' : ''}`}
+        style={{ "--progress": `${progress * 3.6}deg` }}
+      >
+        <div className="circular-progress-value">
+          {progress}%
+        </div>
+      </div>
+      <h5>{title}</h5>
+    </div>
+  );
+};
 
 export const Skills = () => {
+  const skills = [
+    { title: "Web Development", percentage: 95 },
+    { title: "Graphic Design", percentage: 80 },
+    { title: "Video Editing", percentage: 90 },
+    { title: "UI/UX Design", percentage: 85 },
+    { title: "Fotografer", percentage: 75 }
+  ];
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -37,22 +110,14 @@ export const Skills = () => {
                         <h2>Skills</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br></br> Lorem Ipsum has been the industry's standard dummy text.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>Brand Identity</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
-                            </div>
-                            <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
-                            </div>
+                            {skills.map((skill, index) => (
+                                <div className="item" key={index}>
+                                    <CircularProgressBar 
+                                        percentage={skill.percentage}
+                                        title={skill.title}
+                                    />
+                                </div>
+                            ))}
                         </Carousel>
                     </div>
                 </div>
