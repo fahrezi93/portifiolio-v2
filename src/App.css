@@ -240,8 +240,147 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 @media (max-width: 768px) {
+  /* Navbar Mobile */
+  nav.navbar {
+    padding: 12px 0;
+  }
   nav.navbar a.navbar-brand {
     width: 15%;
+    min-width: 40px;
+  }
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    padding: 0 15px;
+    font-size: 16px;
+  }
+  .social-icon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  span.navbar-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .navbar-text button {
+    margin-top: 10px;
+    margin-left: 0;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* Banner Mobile */
+  .banner {
+    padding: 150px 0 50px 0;
+  }
+  .banner h1 {
+    font-size: 40px;
+  }
+  .banner p {
+    font-size: 16px;
+    width: 100%;
+  }
+  .banner button {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  /* Skills Mobile */
+  .skill-bx {
+    padding: 40px 20px;
+    border-radius: 32px;
+  }
+  .skill h2 {
+    font-size: 35px;
+  }
+  .skill p {
+    font-size: 16px;
+    margin: 14px 0 45px 0;
+  }
+  .circular-progress {
+    height: 120px;
+    width: 120px;
+  }
+  .circular-progress::before {
+    height: 100px;
+    width: 100px;
+  }
+  .circular-progress-value {
+    font-size: 1.5rem;
+  }
+
+  /* Projects Mobile */
+  .project {
+    padding: 40px 0;
+  }
+  .project h2 {
+    font-size: 35px;
+  }
+  .project p {
+    font-size: 16px;
+    width: 90%;
+  }
+  .project .nav.nav-pills {
+    width: 90%;
+  }
+  .project .nav.nav-pills .nav-link {
+    padding: 12px 0;
+    font-size: 15px;
+  }
+  .proj-txtx h4 {
+    font-size: 24px;
+  }
+
+  /* Footer Mobile */
+  .footer {
+    padding: 0 0 30px 0;
+    text-align: center;
+  }
+  .footer img {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+  .newsletter-bx {
+    padding: 40px 20px;
+    margin-bottom: 40px;
+  }
+  .new-email-bx {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .new-email-bx button {
+    width: 100%;
+    padding: 15px 0;
+  }
+  .footer p {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra Small Devices */
+  .banner h1 {
+    font-size: 32px;
+  }
+  .skill h2, .project h2 {
+    font-size: 30px;
+  }
+  .circular-progress {
+    height: 100px;
+    width: 100px;
+  }
+  .circular-progress::before {
+    height: 85px;
+    width: 85px;
+  }
+  .circular-progress-value {
+    font-size: 1.2rem;
+  }
+  .project .nav.nav-pills .nav-link {
+    font-size: 13px;
+  }
+  .proj-txtx h4 {
+    font-size: 20px;
   }
 }
 
@@ -617,6 +756,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.footer img.footer-logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .newsletter-bx {
   background: #FFFFFF;
   border-radius: 55px;
@@ -676,9 +823,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 500;
   letter-spacing: 0.5px;
   border-radius: 18px;
-}
-.footer img {
-  width: 26%;
 }
 .footer p {
   font-weight: 400;
