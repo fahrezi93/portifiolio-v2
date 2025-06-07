@@ -36,8 +36,6 @@ export const Projects = () => {
     {
       title: "Podcast Poster",
       description: "HMIF Sriwijaya University",
-
-
       imgUrl: projImg5,
     },
     {
@@ -45,6 +43,20 @@ export const Projects = () => {
       description: "Design & Development",
       imgUrl: projImg6,
     },
+  ];
+
+  const projectsTab2 = [
+    {
+      title: "Judul Proyek Baru 1",
+      description: "Deskripsi Proyek Baru 1",
+      imgUrl: projImg1,
+    },
+    {
+      title: "Judul Proyek Baru 2",
+      description: "Deskripsi Proyek Baru 2",
+      imgUrl: projImg2,
+    },
+    // Tambahkan proyek lainnya untuk Tab 2 di sini
   ];
 
   return (
@@ -84,8 +96,19 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Tab.Pane eventKey="second">
+                      <Row>
+                        {
+                          projectsTab2.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
